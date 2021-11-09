@@ -37,11 +37,3 @@ dataLayer.push({
 }
 
 </script>
-'transaction_id': '{{ConfirmNo}}',
-'value': '{{TotalCostWithTax}}',
-'currency': '{{CurrCode}}',
-'items': [{
-'id': ?,
-'start_date': '{{ArrivalDtDDMMYYYY}}',
-'end_date': '{{DepartDtDDMMYYYY}}'
-}]
