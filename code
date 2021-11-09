@@ -5,17 +5,16 @@ dataLayer.push({
   'ecommerce': {
     'purchase': {
       'actionField': {
-        'id': '980003186',        // Transaction ID. Required           
-        'revenue': '410.00',   // Total transaction value (incl. tax and shipping)
-        'tax':'0.00',
-        'shipping': '0.00',
-        'coupon': ''
+        'id': '{{ConfirmNo}}',        // Transaction ID. Required           
+        'revenue': '{{TotalCostWithTax}}',   // Total transaction value (incl. tax and shipping)
+	'currency': '{{CurrCode}}'
       },
 	  'products': [{          // List of productFieldObjects.
         'name': 'Comfort Room',  // Name or ID is required.
         'id': '',
         'price': '410.00',
-        'brand': '',
+	'start_date': '{{ArrivalDtDDMMYYYY}}',
+	'end_date': '{{DepartDtDDMMYYYY}}'
         'category': '',
         'variant': '',
         'quantity': 1,
@@ -27,3 +26,4 @@ dataLayer.push({
 });
 
 </script>
+
