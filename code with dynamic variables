@@ -1,0 +1,47 @@
+<script>
+if(window.multiRoomReservation != undefined){
+	dataLayer.push(function(){
+    var transactionProduct = [];
+    for(var i = 0; i < this.get('ihReservations').length; i ++){
+      var price = this.get('ihReservations')[i].ihAmount / this.get('ihReservations')[i].ihNights;
+      	transactionProduct.push({
+ 		'sku': this.get('ihReservations')[i].ihConfirmID,
+ 		'name': this.get('ihReservations')[i].ihRoomType,
+ 		'category': this.get('ihReservations')[i].ihRatePlanName,
+ 		'price': price,
+ 		'quantity': this.get('ihReservations')[i].ihNights,
+ 		})
+    }
+   
+  dataLayer.push({
+ 	'transactionId':'{{ihHotelName}}'+' '+'{{ihConfirmID}}',
+   	'transactionTotal': {{ihAmount}},
+   	'transactionTax': {{ihTaxes}},
+ 	'transactionProducts': transactionProduct
+	})
+  });
+}else{
+dataLayer.push({
+   'transactionId':'{{ihHotelName}}'+' '+'{{ihConfirmID}}',
+   'transactionTotal': {{ihAmount}},
+   'transactionTax': {{ihTaxes}},
+   'transactionProducts': [{
+       'sku': '{{ihConfirmID}}',
+       'name': '{{ihRoomType}}',
+       'category': '{{ihRatePlanName}}',
+       'price': {{ihAmount}}/{{ihNights}},
+       'quantity': {{ihNights}}
+   }]
+});
+
+}
+
+</script>
+'transaction_id': '{{ConfirmNo}}',
+'value': '{{TotalCostWithTax}}',
+'currency': '{{CurrCode}}',
+'items': [{
+'id': ?,
+'start_date': '{{ArrivalDtDDMMYYYY}}',
+'end_date': '{{DepartDtDDMMYYYY}}'
+}]
